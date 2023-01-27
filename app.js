@@ -9,28 +9,30 @@ const clearButton = document.querySelector('.clear');
 const equalsButton = document.querySelector('.equals');
 
 let displayContent = '',
-    num1,
-    num2,
-    operation;
+    storedNum1,
+    storedOperation,
+    storedResult;
 
-const add = function(num1, num2) {
+function add(num1, num2) {
     return num1 + num2;
 }
 
-const subtract = function(num1, num2) {
+function subtract(num1, num2) {
     return num1 - num2;
 }
 
-const multiply = function(num1, num2) {
+function multiply(num1, num2) {
     return num1 * num2;
 }
 
-const divide = function(num1, num2) {
+function divide(num1, num2) {
     return num1 / num2;
 }
 
-function operate(operator, num1, num2) {
-    return operator(num1, num2);
+function operate(operation, num1, num2) {
+    storedResult = window[`${operation}`](+num1, +num2);
+    displayElement.textContent = storedResult;
+    return storedResult;
 }
 
 function display(content) {
@@ -44,11 +46,10 @@ function clear() {
     displayElement.textContent = displayContent;
 }
 
-function input(numInput, operationInput) {
-    num1 = numInput;
-    operation = operationInput;
+function store(numInput, operationInput) {
+    storedNum1 = numInput;
+    storedOperation = operationInput;
     display('');
-    console.log(num1, operationInput);
 }
 
 digitButtons.forEach((digitButton) => {
@@ -58,5 +59,7 @@ digitButtons.forEach((digitButton) => {
 clearButton.addEventListener('click', clear);
 
 operatorButtons.forEach((operatorButton) => {
-    operatorButton.addEventListener('click', () => {input(displayContent, operatorButton.dataset.operation);});
+    operatorButton.addEventListener('click', () => {store(displayContent, operatorButton.dataset.operation);});
 });
+
+equalsButton.addEventListener('click', () => {operate(storedOperation, storedNum1, displayContent);});
