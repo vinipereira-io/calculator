@@ -1,0 +1,69 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #d2d2d2;
+}
+
+.calculator-container {
+    max-width:fit-content;
+    max-height: fit-content;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    background-color: #fafafa;
+    border: 1px solid #fafafa;
+    border-radius: 20px;
+}
+
+.display{
+    background-color: #353233;
+    font-size: 50px;
+    color: #21EAF3;
+    border-radius: 20px;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+}
+
+.top-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);;
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
+}
+
+.mid-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);;
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
+}
+
+.bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);;
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
+}
+
+button {
+    background-color: #d6d6d6;
+    border: 1px solid #d6d6d6;
+    border-radius: 360px;
+    font-size: medium;
+    width: 55px;
+    height: 55px;
+}
+
+button.digit[data-digit="0"] {
+    min-width: 110px;
+}
+
+button.equals {
+    background-color: #1A9EBB;
+    color: #ffffff;
+}

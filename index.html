@@ -5,25 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
 <body>
-    <div class="display"></div>
-    <button class="clear">AC</button>
-    <button class="digit">9</button>
-    <button class="digit">8</button>
-    <button class="digit">7</button>
-    <button class="digit">6</button>
-    <button class="digit">5</button>
-    <button class="digit">4</button>
-    <button class="digit">3</button>
-    <button class="digit">2</button>
-    <button class="digit">1</button>
-    <button class="digit">0</button>
-    <button class="operator" data-operation="divide">÷</button>
-    <button class="operator" data-operation="multiply">x</button>
-    <button class="operator" data-operation="subtract">-</button>
-    <button class="operator" data-operation="add">+</button>
-    <button class="equals">=</button>    
-</body>
+    <div class="calculator-container">
+        <div class="display"></div>
+        <div class="buttons-container">
+            <div class="top-grid">
+                <button class="clear"><i class="fa-solid fa-trash"></i></button>
+                <button class="erase"><i class="fa-solid fa-delete-left"></i></button>
+                <button class="operator" data-operation="percentage">%</button>
+                <button class="operator" data-operation="divide">÷</button>
+            </div>
+            <div class="mid-grid">
+                <button class="operator" data-operation="multiply">x</button>
+                <button class="operator" data-operation="subtract">-</button>
+                <button class="operator" data-operation="add">+</button>
+                <button class="digit" data-digit="9">9</button>
+                <button class="digit" data-digit="8">8</button>
+                <button class="digit" data-digit="7">7</button>
+                <button class="digit" data-digit="6">6</button>
+                <button class="digit" data-digit="5">5</button>
+                <button class="digit" data-digit="4">4</button>
+                <button class="digit" data-digit="3">3</button>
+                <button class="digit" data-digit="2">2</button>
+                <button class="digit" data-digit="1">1</button>    
+            </div>
+            <div class="bottom-grid">
+                <button class="digit" data-digit="0">0</button>
+                <button class="decimals">.</button>
+                <button class="equals">=</button>
+            </div>
+        </div>
+    </div>  
+    </body>
 </html>
