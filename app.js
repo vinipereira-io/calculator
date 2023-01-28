@@ -27,13 +27,19 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num1 / num2 === Infinity) return 'Am I joke to you?';
     return num1 / num2;
 }
 
 function operate(operation, num1, num2) {
-    storedResult = window[`${operation}`](+num1, +num2);
+    if (!num1 || !operation) {
+        return 'missing parameters'
+    } else if (!num2) {
+        storedResult = window[`${operation}`](+num1, +num1);
+    } else {
+        storedResult = window[`${operation}`](+num1, +num2);
+    }
     displayElement.textContent = storedResult;
-//    displayContent = '';
     storedNum1 = storedResult;
     return storedResult;
 }
@@ -46,6 +52,10 @@ function display(content) {
 }
 
 function clear() {
+    storedNum1 = 0;
+    storedOperation = '';
+    storedResult = 0;
+    readyToCalculate = false;
     displayContent = '';
     display('');
 }
