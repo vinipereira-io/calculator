@@ -4,7 +4,13 @@ const digitButtons = document.querySelectorAll('.digit');
 
 const operatorButtons = document.querySelectorAll('.operator');
 
+const percentageButton = document.querySelector('.percentage');
+
+const decimalsButton = document.querySelector('.decimals');
+
 const clearButton = document.querySelector('.clear');
+
+const backspaceButton = document.querySelector('.backspace');
 
 const equalsButton = document.querySelector('.equals');
 
@@ -12,7 +18,8 @@ let displayContent = '',
     storedNum1 = 0,
     storedOperation = '',
     storedResult = 0,
-    readyToCalculate = false;
+    readyToCalculate = false,
+    selectedOperator = '';
 
 function add(num1, num2) {
     return num1 + num2;
@@ -57,7 +64,32 @@ function clear() {
     storedResult = 0;
     readyToCalculate = false;
     displayContent = '';
+    if (selectedOperator != null && selectedOperator != '') {
+        selectedOperator.classList.remove('selected');
+    }
+    selectedOperator = '';
     display('');
+}
+
+function backspace() {
+    displayContent = displayContent.slice(0, displayContent.length - 1);
+    displayElement.textContent = displayContent;
+}
+
+function percentage() {
+    if (displayContent != '') {
+        displayContent = displayContent / 100;
+        displayElement.textContent = displayContent;
+    }
+}
+
+function decimals() {
+    const regex = /\./g
+    const found = displayContent.match(regex)
+    if (found == null) {
+        displayContent += '.';
+        displayElement.textContent = displayContent;
+    }
 }
 
 function store(numInput, operationInput) {
@@ -77,13 +109,32 @@ function store(numInput, operationInput) {
 }
 
 digitButtons.forEach((digitButton) => {
-    digitButton.addEventListener('click', () => {display(digitButton.textContent);});
+    digitButton.addEventListener('click', () => {
+        display(digitButton.textContent);
+        selectedOperator = document.querySelector('.operator.selected');
+        if (selectedOperator != null && selectedOperator != '') {
+            selectedOperator.classList.remove('selected');
+        }
+    });
 });
+
+percentageButton.addEventListener('click', percentage);
+
+decimalsButton.addEventListener('click', decimals);
 
 clearButton.addEventListener('click', clear);
 
+backspaceButton.addEventListener('click', backspace);
+
 operatorButtons.forEach((operatorButton) => {
-    operatorButton.addEventListener('click', () => {store(displayContent, operatorButton.dataset.operation);});
+    operatorButton.addEventListener('click', () => {
+        store(displayContent, operatorButton.dataset.operation);
+        if (selectedOperator != null && selectedOperator != '') {
+            selectedOperator.classList.remove('selected');
+        }
+        operatorButton.classList.add('selected');
+        selectedOperator = document.querySelector('.operator.selected');
+    });
 });
 
 equalsButton.addEventListener('click', () => {operate(storedOperation, storedNum1, displayContent); readyToCalculate = false;});

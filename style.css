@@ -19,6 +19,7 @@ body {
 }
 
 .display{
+    height: 60px;
     background-color: #353233;
     font-size: 50px;
     color: #21EAF3;
@@ -29,11 +30,16 @@ body {
     padding: 20px;
 }
 
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
 .top-grid {
-    display: grid;
-    grid-template-columns: repeat(4, auto);;
-    grid-template-rows: repeat(3, auto);
-    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
 }
 
 .mid-grid {
@@ -44,10 +50,9 @@ body {
 }
 
 .bottom-grid {
-    display: grid;
-    grid-template-columns: repeat(3, auto);;
-    grid-template-rows: repeat(3, auto);
-    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
 }
 
 button {
@@ -60,10 +65,20 @@ button {
 }
 
 button.digit[data-digit="0"] {
-    min-width: 110px;
+    width: 120px;
+}
+
+button.operator {
+    background-color: #1A9EBB;
+    color: #ffffff;
+}
+
+button.operator.selected {
+    background-color: #ffffff;
+    color: #1A9EBB;
 }
 
 button.equals {
-    background-color: #1A9EBB;
+    background-color: #E9AE57;
     color: #ffffff;
 }
