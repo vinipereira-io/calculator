@@ -30,12 +30,12 @@ function subtract(num1, num2) {
 }
 
 function multiply(num1, num2) {
-    return num1 * num2;
+    return Math.round((num1 * num2) * 10000000) / 10000000;
 }
 
 function divide(num1, num2) {
     if (num1 / num2 === Infinity) return 'Am I joke to you?';
-    return num1 / num2;
+    return Math.round((num1 / num2) * 10000000) / 10000000;
 }
 
 function operate(operation, num1, num2) {
@@ -54,8 +54,10 @@ function operate(operation, num1, num2) {
 function display(content) {
     storedResult = '';
     if (!content) displayContent = '';
-    displayContent += content;
-    displayElement.textContent = displayContent;
+    if (displayContent.length < 9) {
+        displayContent += content;
+        displayElement.textContent = displayContent;
+    }
 }
 
 function clear() {
